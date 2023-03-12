@@ -1,5 +1,7 @@
 package com.example.demo5.hiber;
 
+import com.example.demo5.entity.Brand;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
