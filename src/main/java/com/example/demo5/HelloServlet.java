@@ -33,17 +33,17 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        MyJsonData jsonData = new MyJsonData("Errorsd", "World123");
+       // MyJsonData jsonData = new MyJsonData("Errorsd", "World123");
         String accId = request.getParameter("accId");
         System.out.println(accId);
 
         Integer id = Integer.valueOf(accId);
         AccountRepository accountRepository = new AccountRepository();
-        Account accountById = accountRepository.getAccountById(id);
+       // Account accountById = accountRepository.getAccountById(id);
 
         // Jackson Object Mapper kullanarak JSON nesnesini stringe dönüştürün
         ObjectMapper objectMapper = new ObjectMapper();
-        String jsonStr = objectMapper.writeValueAsString(jsonData);
+      //  String jsonStr = objectMapper.writeValueAsString(jsonData);
         /*{
         "message": "hello",
         "name": "world"
@@ -56,7 +56,7 @@ public class HelloServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK);
 
         // JSON stringi response body'sine yazın
-        response.getWriter().write(jsonStr);
+      //  response.getWriter().write(jsonStr);
     }
 
     @Override
@@ -72,20 +72,20 @@ public class HelloServlet extends HttpServlet {
 
         // JSON stringini Java nesnesine dönüştür
         ObjectMapper objectMapper = new ObjectMapper();
-        MyJsonData jsonData = objectMapper.readValue(jsonStr, MyJsonData.class);
+      //  MyJsonData jsonData = objectMapper.readValue(jsonStr, MyJsonData.class);
 
         // Java nesnesini kullanarak işlem yap
-        String message = jsonData.getMessage();
-        String name = jsonData.getName();
-        ObjectMapper objectMapper = new ObjectMapper();
-        Brand account = objectMapper.readValue(jsonStr, Account.class);
+      //  String message = jsonData.getMessage();
+      //  String name = jsonData.getName();
+     //   ObjectMapper objectMapper = new ObjectMapper();
+     //   Brand account = objectMapper.readValue(jsonStr, Account.class);
 
         response.getWriter().write("Ugurla elave olunmusdur.");
         AccountRepository accountRepository = new AccountRepository();
-        Brand brandInDb = accountRepository.saveAccount(account);
+      //  Brand brandInDb = accountRepository.saveAccount(account);
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().write(objectMapper.writeValueAsString(brandInDb));
+      //  response.getWriter().write(objectMapper.writeValueAsString(brandInDb));
 
     }
 }
